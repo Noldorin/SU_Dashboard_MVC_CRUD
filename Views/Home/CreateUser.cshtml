@@ -1,0 +1,56 @@
+﻿@model Dashboard_FrontEnd_Prototype.Models.UserModel
+
+@{
+    TempData["Title"] = "Create new user";
+}
+
+
+
+<h2>@TempData["Title"]</h2>
+<hr />
+<br>
+<br>
+<h4>@TempData["Message"]</h4>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <form method="post">
+                    @Html.DisplayFor(model => model.name, new { @class = "inputclass" })
+                    @Html.EditorFor(model => model.name, new { @class = "inputclass" })
+                    @Html.ValidationMessageFor(model => model.name)
+                    <br />
+                    @Html.DisplayFor(model => model.role, new { @class = "inputclass" })
+                    @Html.EditorFor(model => model.role, new { @class = "inputclass" })
+                    <br />
+
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </form>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+}
+
+
+<br>
+<br>
+<p>Build 1.0</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

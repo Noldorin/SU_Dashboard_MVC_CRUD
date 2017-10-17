@@ -1,0 +1,37 @@
+﻿@model Dashboard_FrontEnd_Prototype.Models.UserModel
+
+@{
+    ViewBag.Title = "Update User";
+}
+
+<h4>@ViewBag.Title</h4>
+
+<br>
+<br>
+
+<h2>@ViewBag.Message</h2>
+
+@using (Html.BeginForm("UpdateUserConfirm", "Home"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <form method="post">
+                    <input type="hidden" name="Name" value="@Model.name"><br>
+                    <br />
+                    New Role: <br>
+                    <input type="text" name="NewRole"><br>
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </form>
+                <br>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+}

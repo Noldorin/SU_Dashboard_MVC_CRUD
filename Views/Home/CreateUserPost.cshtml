@@ -1,0 +1,30 @@
+﻿@model Dashboard_FrontEnd_Prototype.Models.UserModel
+
+@{
+    TempData["Title"] = "User Created!";
+}
+
+
+
+<h2>@TempData["Title"]</h2>
+<hr />
+<br>
+<br>
+<h4>@TempData["Message"]</h4>
+
+<div class="body-content">
+    <div class="col-md-offset-2 col-md-10">
+        Name: @Model.name
+        <br>
+        Role: @Model.role.ToString()
+        <br>
+    </div>
+</div>
+
+<br>
+<br>
+<p>Build 1.0</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

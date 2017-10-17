@@ -1,0 +1,43 @@
+﻿@model Dashboard_FrontEnd_Prototype.Models.UserList
+
+@{
+    ViewBag.Title = "UserIndex";
+}
+
+<h2>UserIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New User", "CreateUser")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.list) {
+    <tr>
+        <td>
+            @item.Name, @item.Role
+
+            @using (Html.BeginForm("DeleteUserFromIndex", "Home"))
+            {
+                @Html.Hidden("nameFromIndex", item.Name)
+
+                <input type="submit" value="Delete User" />
+            }
+
+            @using (Html.BeginForm("UpdateUserFromIndex", "Home"))
+            {
+                @Html.Hidden("nameFromIndex", item.Name)
+
+                <input type="submit" value="Update User" />
+            }
+        </td>
+    </tr>
+}
+
+</table>
+
+@*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@

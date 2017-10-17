@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Delete User";
+}
+
+<h2>Delete User</h2>
+
+<h3>Are you sure you want to delete @Request.Form["nameFromIndex"]?</h3>
+<div>
+    <h4>UserModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+
+    @using (Html.BeginForm("ConfirmDeleteFromIndex", "Home"))
+    {
+        @Html.Hidden("nameFromIndex", Request.Form["nameFromIndex"])
+
+        <input type="submit" value="Delete." />
+    }
+
+</div>

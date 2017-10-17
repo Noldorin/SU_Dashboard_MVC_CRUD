@@ -1,0 +1,52 @@
+﻿@model Dashboard_FrontEnd_Prototype.Models.UserModel
+
+@{
+    ViewBag.Title = "Search Result";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<br>
+<br>
+
+@{
+    if (Model == null)
+    {
+        ViewBag.Message = "The User does not exist...";
+        <h4>@ViewBag.Message</h4>
+    }
+    else
+    {
+        ViewBag.Message = "The user has been found and their info is below! You may Delete/Change them if you wish...";
+
+        <h4>@ViewBag.Message</h4>
+        <br>
+        <br>
+        <body>
+            Name: @Model.name
+            <br />
+            Role: @Model.role
+
+            <br>
+            <br>
+            @using (Html.BeginForm("DeleteUser", "Home"))
+            {
+                @Html.HiddenFor(x => x.name)
+                @Html.HiddenFor(x => x.role)
+
+                <input type="submit" value="Go to Delete User Page" />
+            }
+            <br>
+            @using (Html.BeginForm("UpdateUser", "Home"))
+            {
+                @Html.HiddenFor(x => x.name)
+                @Html.HiddenFor(x => x.role)
+
+                <input type="submit" value="Go to Update User Page" />
+            }
+
+        </body>
+    }
+}
+
+<br />
